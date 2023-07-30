@@ -32,7 +32,11 @@ public class StudentController {
 
     @PostMapping("/students")
     public String saveStudent(@ModelAttribute Student student) {
-        studentService.saveStudent(student);
+        if(student.getId() == 0) {
+            studentService.saveStudent(student);
+        } else {
+            studentService.updateStudent(student);
+        }
         return "redirect:/students";
     }
 
@@ -42,7 +46,7 @@ public class StudentController {
         return "redirect:/students";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/students/update/{id}")
     public String showUpdateForm(@PathVariable long id, Model model) {
         Student student = studentService.getStudentById(id);
         model.addAttribute("student", student);
