@@ -42,7 +42,6 @@ public class StudentServiceImpl implements StudentService{
             existingStudent.setFirstName(student.getFirstName());
             existingStudent.setLastName(student.getLastName());
             existingStudent.setEmail(student.getEmail());
-            studentRepository.save(existingStudent);
         }
     }
 }
